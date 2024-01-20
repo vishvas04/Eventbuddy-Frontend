@@ -3,7 +3,7 @@ const Navbar=()=>{
      return (
      <nav className='navbar navbar-expand-sm navbar-dark bg-dark mb-3'>
        <div className='container-fluid'>
-         <a className='navbar-brand' href='#'>
+         <a className='navbar-brand' href='/home'>
            Event Buddy
          </a>
          <button

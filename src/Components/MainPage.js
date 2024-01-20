@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
+import { Routes, Route, NavLink, useNavigate,Navigate } from 'react-router-dom'
 // import './MainPage.css'; 
 import UserProfile from './UserProfile';
 import { Card, Container,Row, Col } from 'react-bootstrap';
@@ -11,29 +11,14 @@ import Concert from "./Concert";
 import Test from "./Test";
 import Marathon from "./Marathon";
 import Comic from "./Comic";
+
 const MainPage = () => {
-  // const [selectedEvent, setSelectedEvent] = useState(null);
-  // const [registrationPopup, setRegistrationPopup] = useState(false);
 
-  // const events = [
-  //   { id: 1, name: 'Football Match', details: 'Exciting football match details go here.' },
-  //   { id: 2, name: 'Malik Show', details: 'Entertaining Malik Show details go here.' },
-  //   { id: 3, name: 'Dhee Show', details: 'Dance competition Dhee Show details go here.' },
-  //   { id: 4, name: 'BTS Concert', details: 'Epic BTS Concert details go here.' },
-  // ];
-
-  // const handleEventClick = (event) => {
-  //   setSelectedEvent(event);
-  // };
-
-  // const handleRegistration = () => {
-  //   setRegistrationPopup(true);
-  // };
-
-  // const closePopup = () => {
-  //   setRegistrationPopup(false);
-  //   setSelectedEvent(null);
-  // };
+  const navigate=useNavigate();
+  const navigateEvents=()=>{
+    
+    navigate('/event-details')
+  }
   const events = [
     { 
         name: "Hyderabad Comic Con 2024",
@@ -84,55 +69,8 @@ const MainPage = () => {
     }
 ];
 
-// const EventCard = ({ event }) => (
-//     <Col key={event.name}>
-//     <Card className='mx-2' style={{ marginBottom: 30 }}>
-//         <Card.Img variant="top" src={event.imageURL} alt={event.name} />
-//         <Card.Body>
-//             <Card.Title>{event.name}</Card.Title>
-//             <Card.Text>{event.summary}</Card.Text>
-//             <Card.Subtitle variant="primary">{event.date.toLocaleDateString()}</Card.Subtitle>
-//             {/* <Card.Link href={`/register/${event.name}`}>Learn More</Card.Link> */}
-//             <Link to={`/register/${event.name}`} state={{ event: event }}>Learn more</Link>
-//         </Card.Body>
-//     </Card>
-//     </Col>
-//   // </Row>
-// ); 
   return (
-    // <div className="main-container">
-    // <div className="welcome-section">
-    //     <h3><a href='/user'>User Profile</a></h3>
-    //   </div>
-    //   <div className="welcome-section">
-    //     <h1>Welcome to Event Buddy</h1>
-    //   </div>
-
-    //   <div className="event-boxes">
-    //     {events.map((event) => (
-    //       <div key={event.id} className="event-box" onClick={() => handleEventClick(event)}>
-    //         {event.name}
-    //       </div>
-    //     ))}
-    //   </div>
-
-    //   {selectedEvent && (
-    //     <div className="event-details">
-    //       <h2>{selectedEvent.name}</h2>
-    //       <p>{selectedEvent.details}</p>
-    //       <button onClick={handleRegistration}>Register</button>
-    //     </div>
-    //   )}
-
-    //   {registrationPopup && (
-    //     <div className="popup">
-    //       <div className="popup-content">
-    //         <p>Thank you for registering!</p>
-    //         <button onClick={closePopup}>Close</button>
-    //       </div>
-    //     </div>
-    //   )}
-    // </div>
+   
     <div>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
         <div className="container-fluid">
@@ -142,16 +80,16 @@ const MainPage = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              {/* link for home */}
+              
               <li className="nav-item">
                 <NavLink className="nav-link" to="">Home</NavLink>
               </li>
-              {/* link for users */}
+              
               <li className="nav-item">
                 <NavLink className="nav-link" to="/user">UserProfile</NavLink>
-                {/* <a href='/user' className="nav-link">User Profile</a> */}
+                
               </li>
-              {/* link for contactus */}
+              
             </ul>
           </div>
         </div>
@@ -168,7 +106,7 @@ const MainPage = () => {
             <Row xs={1} md={4} className="g-4">
               {
                 events.map((event,idx)=>(
-                  <Col key={idx} className='d-flex align-items-stretch'>
+                  <Col key={idx} className='d-flex align-items-stretch' onClick={navigateEvents}>
                     {/* <div className="d-flex align-items-stretch"> */}
                     <Card className='mx-2' style={{ marginBottom: 30 }}>
                       <Card.Img variant="top" src={event.imageURL} alt={event.name} />
@@ -176,18 +114,16 @@ const MainPage = () => {
                         <Card.Title>{event.name}</Card.Title>
                         <Card.Text>{event.summary}</Card.Text>
                         <Card.Subtitle variant="primary">{event.date.toLocaleDateString()}</Card.Subtitle>
-                        {/* <Card.Link href={`/register/${event.name}`}>Learn More</Card.Link> */}
-                        <Link to={`/${event.id}`} state={{ event: event }} target='_blank'>Learn more</Link>
+                      
+                        
                         </Card.Body>
                     </Card>
-                    {/* </div> */}
+                    
                   </Col>
                 ))
               }
             </Row>
-                {/* } */}
-            {/* </Container> */}
-        {/* </Container> */}
+             
     </div>
   );
 };
