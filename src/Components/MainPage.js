@@ -5,12 +5,7 @@ import UserProfile from './UserProfile';
 import { Card, Container,Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
-import Ranbir from "./Ranbir";
-import Zomaland from "./Zomaland";
-import Concert from "./Concert";
-import Test from "./Test";
-import Marathon from "./Marathon";
-import Comic from "./Comic";
+
 
 const MainPage = () => {
 
@@ -70,7 +65,6 @@ const MainPage = () => {
 ];
 
   return (
-   
     <div>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
         <div className="container-fluid">
@@ -114,8 +108,6 @@ const MainPage = () => {
                         <Card.Title>{event.name}</Card.Title>
                         <Card.Text>{event.summary}</Card.Text>
                         <Card.Subtitle variant="primary">{event.date.toLocaleDateString()}</Card.Subtitle>
-                      
-                        
                         </Card.Body>
                     </Card>
                     
@@ -123,7 +115,6 @@ const MainPage = () => {
                 ))
               }
             </Row>
-             
     </div>
   );
 };
