@@ -1,11 +1,10 @@
 import { Box, useMediaQuery } from "@mui/material";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Skeleton from "@mui/material/Skeleton";
 import { Typography } from "@mui/material";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./UserProfile.css";
 // import {} from useState
 import {
@@ -18,13 +17,13 @@ import {
   MDBCardImage,
   MDBTypography,
 } from "mdb-react-ui-kit";
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
+import { useTheme } from "@mui/material/styles";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Button from "@mui/material/Button";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -42,7 +41,7 @@ const names = [
   "Singing",
   "Space Explorations",
   "Writing Blogs",
-  "Karate"
+  "Karate",
 ];
 
 function getStyles(name, personName, theme) {
@@ -86,7 +85,7 @@ const UserProfile = () => {
                 style={{ backgroundColor: "#f8f9fa" }}
               >
                 <div className="d-flex justify-content-end text-center py-1">
-                  <div className='d-flex justify-content-end text-center py-1'>
+                  <div className="d-flex justify-content-end text-center py-1">
                     <FormControl sx={{ m: 1, width: 300 }}>
                       <InputLabel id="demo-multiple-name-label">
                         Interest
@@ -118,18 +117,15 @@ const UserProfile = () => {
                 <div className="mb-5">
                   <p className="lead fw-normal mb-1">Interests</p>
                   <div className="p-4" style={{ backgroundColor: "#f8f9fa" }}>
-                    {
-                      personName.map((name)=>{
-                        <MDBCardText className="font-italic mb-1">{name}</MDBCardText>
-                      })
-                    }
+                    {personName.map((name) => {
+                      <MDBCardText className="font-italic mb-1">
+                        {name}
+                      </MDBCardText>;
+                    })}
                   </div>
                 </div>
-                <div className="d-flex justify-content-between align-items-center mb-4">
-
-                </div>
-                <MDBRow>
-                </MDBRow>
+                <div className="d-flex justify-content-between align-items-center mb-4"></div>
+                <MDBRow></MDBRow>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
