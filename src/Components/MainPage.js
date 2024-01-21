@@ -5,12 +5,7 @@ import UserProfile from './UserProfile';
 import { Card, Container,Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
-import Ranbir from "./Ranbir";
-import Zomaland from "./Zomaland";
-import Concert from "./Concert";
-import Test from "./Test";
-import Marathon from "./Marathon";
-import Comic from "./Comic";
+
 
 const MainPage = () => {
 

@@ -1,27 +1,31 @@
-import React from 'react';
-import './UserProfile.css'; 
+import { Box, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import Skeleton from "@mui/material/Skeleton";
+import { Typography } from "@mui/material";
 
 const UserProfile = () => {
   return (
-    <div className="profile-container">
-      <div className="profile-heading">
+    <div className='profile-container'>
+      <div className='profile-heading'>
         <h1>Profile</h1>
       </div>
 
-      <div className="profile-details">
-        <div className="profile-item">
+      <div className='profile-details'>
+        <div className='profile-item'>
           <label>Name:</label>
           <p>Vishvas</p>
         </div>
-        <div className="profile-item">
+        <div className='profile-item'>
           <label>College:</label>
           <p>VNR</p>
         </div>
-        <div className="profile-item">
+        <div className='profile-item'>
           <label>Contact:</label>
           <p>xyz</p>
         </div>
-        <div className="profile-item">
+        <div className='profile-item'>
           <label>Email:</label>
           <p>XYZ@...</p>
         </div>
