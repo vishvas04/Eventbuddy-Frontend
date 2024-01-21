@@ -9,6 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Grid } from '@mui/material';
 import Skeleton from "@mui/material/Skeleton";
+
 const Home = () => {
 
   const navigate=useNavigate();
