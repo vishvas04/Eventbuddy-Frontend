@@ -14,20 +14,51 @@ import {
   Divider,
   Grid,
 } from '@mui/material';
-// import AddBoxIcon from '@mui/icons-material/AddBox';
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 import './UserProfile.css';
+
+const interestImages = {
+  Dancing: 'https://rukminim2.flixcart.com/image/400/480/ky4qgsw0/sticker/l/v/r/medium-dance-wall-decals-wall-stickers-for-dance-girl-dancing-original-imagafg5xehnq4jz.jpeg?q=20&crop=false',
+  Singing: 'https://classroomclipart.com/image/static7/preview2/young-girl-standing-on-stage-holding-microphone-singing-surround-58786.jpg',
+  'Space Exploration': 'https://media.istockphoto.com/id/1353874144/photo/astronaut-in-outer-space-spaceman-with-starry-and-galactic-background-sci-fi-digital-wallpaper.jpg?s=300',
+  'Writing Blogs': 'https://www.aprompt.co.uk/uploads/blog/bloggers-wiltshire.jpge',
+  Sports: 'https://media.npr.org/assets/img/2020/06/10/gettyimages-200199027-001-b5fb3d8d8469ab744d9e97706fa67bc5c0e4fa40.jpg',
+  // Add more interests and their corresponding images
+};
+
+const eventImages = {
+  'Event 1': 'URL_TO_EVENT_IMAGE_1',
+  'Event 2': 'URL_TO_EVENT_IMAGE_2',
+  'Event 3': 'URL_TO_EVENT_IMAGE_3',
+  // Add more events and their corresponding images
+};
 
 const UserProfile = () => {
   const [selectedInterest, setSelectedInterest] = useState('');
   const [interests, setInterests] = useState([]);
-  const [events, setEvents] = useState(['Event 1', 'Event 2', 'Event 3', 'Event 4','Event 5','Event 6','Event 6','Event 6']); // Placeholder for registered events
+  const [events, setEvents] = useState(['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5', 'Event 6', 'Event 7', 'Event 8','Event 9']); // Placeholder for registered events
 
   const handleAddInterest = () => {
     if (selectedInterest.trim() !== '') {
-      setInterests([...interests, selectedInterest.trim()]);
+      // Check if the interest already exists in the array
+      if (!interests.includes(selectedInterest.trim())) {
+        setInterests([...interests, selectedInterest.trim()]);
+      }
       setSelectedInterest('');
     }
+  };
+
+  const handleDeleteInterest = (index) => {
+    const newInterests = [...interests];
+    newInterests.splice(index, 1);
+    setInterests(newInterests);
+  };
+
+  const handleDeleteEvent = (index) => {
+    const newEvents = [...events];
+    newEvents.splice(index, 1);
+    setEvents(newEvents);
   };
 
   return (
@@ -54,13 +85,12 @@ const UserProfile = () => {
 
           <Divider style={{ margin: '20px 0', background: '#ffffff' }} />
 
-          <div>
+          <div className='interest'>
             <Typography variant="h6" gutterBottom style={{ flex: '75%' }}>
               Add Interests
             </Typography>
             <Select
-              className="select1 "
-              // label="Select Interest"
+              className="select1"
               value={selectedInterest}
               onChange={(e) => setSelectedInterest(e.target.value)}
               variant="outlined"
@@ -71,8 +101,7 @@ const UserProfile = () => {
               <MenuItem value="Singing">Singing</MenuItem>
               <MenuItem value="Space Exploration">Space Exploration</MenuItem>
               <MenuItem value="Writing Blogs">Writing Blogs</MenuItem>
-              <MenuItem value="Coding">Sports</MenuItem>
-              {/* Add more interests as needed */}
+              <MenuItem value="Sports">Sports</MenuItem>
             </Select>
             <Button variant="contained" onClick={handleAddInterest} className='btn1'>Add</Button>
           </div>
@@ -83,20 +112,24 @@ const UserProfile = () => {
             <Typography variant="h6" gutterBottom>
               Registered Interests
             </Typography>
-            <List>
-              {interests.map((interest, index) => (
-                <ListItem
-                  key={index}
-                  disableGutters
-                  // sx={{ background: 'rgba(255, 255, 255, 0.1)', marginBottom: '5px', borderRadius: '5px' }}
-                >
-                  <ListItemText primary={interest} />
-                  <ListItemSecondaryAction>
-                    {/* You can add options like delete or edit here */}
-                  </ListItemSecondaryAction>
-                </ListItem>
-              ))}
-            </List>
+          </div>
+          <div className='box1' style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+            {interests.map((interest, index) => (
+              <Paper key={index} style={{ width: '150px', margin: '10px', padding: '10px', borderRadius: '15px', position: 'relative', boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)' }}>
+                <div style={{ backgroundImage: `url(${interestImages[interest]})`, backgroundSize: 'cover', height: '80px', borderRadius: '10px', marginBottom: '10px' }} />
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Typography variant="body1" style={{ textAlign: 'center', fontWeight: 'bold', color: 'red', flex: 1 }}>{interest}</Typography>
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => handleDeleteInterest(index)}
+                    style={{ color: '#000000' }}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </div>
+              </Paper>
+            ))}
           </div>
         </Paper>
       </Grid>
@@ -115,20 +148,24 @@ const UserProfile = () => {
           <Typography variant="h6" gutterBottom>
             Registered Events
           </Typography>
-          <List>
+          <div className='box1' style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             {events.map((event, index) => (
-              <ListItem
-                key={index}
-                disableGutters
-                // sx={{ background: 'rgba(255, 255, 255, 0.1)', marginBottom: '5px', borderRadius: '5px' }}
-              >
-                <ListItemText primary={event} />
-                <ListItemSecondaryAction>
-                  {/* You can add options like unregister or view details here */}
-                </ListItemSecondaryAction>
-              </ListItem>
+              <Paper key={index} style={{ width: '150px', margin: '10px', padding: '10px', borderRadius: '15px', position: 'relative', boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)' }}>
+                <div style={{ backgroundImage: `url(${eventImages[event]})`, backgroundSize: 'cover', height: '80px', borderRadius: '10px', marginBottom: '10px' }} />
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:'space-evenlyx' }}>
+                  <Typography variant="body1" style={{ textAlign: 'center', fontWeight: 'bold', color: 'red', flex: 1 }}>{event}</Typography>
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => handleDeleteEvent(index)}
+                    style={{ color: '#000000', marginTop: '5px' }}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </div>
+              </Paper>
             ))}
-          </List>
+          </div>
         </Paper>
       </Grid>
     </Grid>
