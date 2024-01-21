@@ -65,7 +65,6 @@ const MainPage = () => {
 ];
 
   return (
-   
     <div>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
         <div className="container-fluid">
@@ -109,8 +108,6 @@ const MainPage = () => {
                         <Card.Title>{event.name}</Card.Title>
                         <Card.Text>{event.summary}</Card.Text>
                         <Card.Subtitle variant="primary">{event.date.toLocaleDateString()}</Card.Subtitle>
-                      
-                        
                         </Card.Body>
                     </Card>
                     
@@ -118,7 +115,6 @@ const MainPage = () => {
                 ))
               }
             </Row>
-             
     </div>
   );
 };
