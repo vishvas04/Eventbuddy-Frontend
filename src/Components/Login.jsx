@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
-
+// import './Login.css'
 import Button from "./Button";
 import Icon from "./Icon";
 import Input from "./Input";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-
+import './Login.css'
 const Login = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -43,7 +43,7 @@ const Login = () => {
   const TwitterBackground =
     "linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)";
   return (
-    <MainContainer>
+    <MainContainer className="main1">
       <WelcomeText>Welcome Back !</WelcomeText>
       <form action="" onSubmit={handleSubmit}>
         <InputContainerTop>
