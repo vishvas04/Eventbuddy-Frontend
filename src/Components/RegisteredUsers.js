@@ -6,21 +6,19 @@ const RegisteredUsers=(props)=>{
    
     return (
       <div>
-        <Typography
-          
-          variant='h5'
-          fontWeight='500'
-          sx={{ mb: "1.5rem" }}
-        >
+        <Typography variant='h5' fontWeight='500' sx={{ mb: "1.5rem" }}>
           Registered Users
         </Typography>
-        <Box display='flex' flexDirection='column' gap='1.5rem'>
-          {props.users.map((user, index) => (
-            user._id!=="65aa0371666d044403dc5f89" && <User
-              key={user._id}
-              name={`${user.firstName} ${user.lastName}`}
-            />
-          ))}
+        <Box display='flex' flexDirection='column' gap="1.5rem">
+          {props.users.map(
+            (user, index) =>
+              user._id !== "65aa0371666d044403dc5f89" && (
+                <User
+                  key={user._id}
+                  name={`${user.firstName} ${user.lastName}`}
+                />
+              )
+          )}
         </Box>
       </div>
     );

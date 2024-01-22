@@ -5,7 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 // import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -13,9 +12,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-const Registration = () => {
+const Registeration = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,61 +28,26 @@ const Registration = () => {
       [name]: value,
     }));
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log("formData", formData);
+
+    const response = await fetch(`http://localhost:6001/api/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Specify the content type as JSON
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+    console.log("data", data);
+  };
+
   const defaultTheme = createTheme();
   return (
-    // <div className="registration-container">
-    //   <div className="registration-form">
-    //     <h2>Register</h2>
-    //     <form>
-    //       <div className="form-group">
-    //         <label htmlFor="firstName">First Name</label>
-    //         <input
-    //           type="text"
-    //           id="firstName"
-    //           name="firstName"
-    //           value={formData.firstName}
-    //           onChange={handleChange}
-    //         />
-    //       </div>
-    //       <div className="form-group">
-    //         <label htmlFor="lastName">Last Name</label>
-    //         <input
-    //           type="text"
-    //           id="lastName"
-    //           name="lastName"
-    //           value={formData.lastName}
-    //           onChange={handleChange}
-    //         />
-    //       </div>
-    //       <div className="form-group">
-    //         <label htmlFor="email">Email</label>
-    //         <input
-    //           type="email"
-    //           id="email"
-    //           name="email"
-    //           value={formData.email}
-    //           onChange={handleChange}
-    //         />
-    //       </div>
-    //       <div className="form-group">
-    //         <label htmlFor="password">Password</label>
-    //         <input
-    //           type="password"
-    //           id="password"
-    //           name="password"
-    //           value={formData.password}
-    //           onChange={handleChange}
-    //         />
-    //       </div>
-    //       <div className="button-group">
-    //         <button type="submit">Register</button>
-    //         <Link to="/login" className="login-button">
-    //           Login
-    //         </Link>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
+   
     <div>
     <ThemeProvider theme={defaultTheme}>
     <Grid container component="main" sx={{ height: '100vh' }}>
@@ -195,5 +158,4 @@ const Registration = () => {
     </div>
   );
 };
-
-export default Registration;
+export default Registeration; 

@@ -97,7 +97,7 @@ const EventDetails=()=> {
   return (
     <div style={{ paddingTop: "35px" }}>
       <Navbar />
-      <Box display="flex" justifyContent="space-around">
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
         {eventData ? (
           <Box
             display='flex'
@@ -188,14 +188,14 @@ const EventDetails=()=> {
         )}
         {users.length > 0 && (
           <Box
-            height="100%"
+            height='100%'
             padding='3rem'
             border='1px solid #ccc' // Add a border to the RegisteredUsers box
           >
             <RegisteredUsers users={users} />
           </Box>
         )}
-      </Box>
+      </div>
     </div>
   );
   

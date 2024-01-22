@@ -6,8 +6,9 @@ const User = ({name}) => {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          justifyContent: "flex-start",
+          gap:"1.2rem"
+          // alignItems: "center",
         }}
       >
         <Avatar>{name[0]}</Avatar>
