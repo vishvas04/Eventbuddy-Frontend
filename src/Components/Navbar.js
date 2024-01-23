@@ -39,9 +39,11 @@ const Navbar = () => {
   };
 
   const handleLogoutClick = () => {
+
     
     localStorage.removeItem("token");
     localStorage.removeItem("userId")
+
     navigate("/login");
     handleClose();
   };

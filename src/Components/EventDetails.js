@@ -29,8 +29,7 @@ const EventDetails=()=> {
           },
         }
       );
-      const data=await response.json();
-      
+      const data=await response.json();      
       setEventData(data.data)
       
       
@@ -58,7 +57,6 @@ const EventDetails=()=> {
       setFlag(true)
     }
   }
-  
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -87,6 +85,7 @@ const EventDetails=()=> {
           eventName: eventData.name.text,
           summary:eventData.summary,
           imgUrl:eventData.logo.original.url,
+
         }),
       }
     );
@@ -94,11 +93,11 @@ const EventDetails=()=> {
       setIsSnackbarOpen(true);
     }
     const data=response.json();
-    console.log("response",response)
     if(response.ok)
     {
       setFlag(true)
     }
+
     
   }
   return (
@@ -197,7 +196,9 @@ const EventDetails=()=> {
           <Box
             height='100%'
             padding='3rem'
+            feature/register
             border='1px solid #ccc' 
+
           >
             <RegisteredUsers users={users} />
           </Box>

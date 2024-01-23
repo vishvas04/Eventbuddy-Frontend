@@ -1,4 +1,3 @@
-
 import { Typography} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 const User = ({name}) => {
